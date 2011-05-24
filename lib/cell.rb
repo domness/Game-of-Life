@@ -8,6 +8,7 @@ class Cell
   def initialize
     @neighbours = []
     @state = :dead
+    @next_state = nil
   end
 
   def add_neighbour(cell)
