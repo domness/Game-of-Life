@@ -32,6 +32,9 @@ class Cell
   end
 
   def iterate
-    @state = :alive
+    if @next_state != nil
+      @state = @next_state
+      @next_state = nil
+    end
   end
 end

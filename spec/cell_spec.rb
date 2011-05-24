@@ -49,9 +49,30 @@ describe "Cell" do
 
   it "should assess its state for its next iteration" do
     cell1 = Cell.new
+    cell1.state.should == :dead
+
+    cell1.state = :alive
+    cell1.state.should == :alive
+
+    cell1.next_state = :dead
+    cell1.state.should == :alive
+
+    cell1.iterate
+    cell1.state.should == :dead
+
     cell1.next_state = :alive
     cell1.state.should == :dead
+
     cell1.iterate
     cell1.state.should == :alive
+
+    cell1.iterate
+    cell1.state.should == :alive
+
+    cell1.state = :dead
+    cell1.state.should == :dead
+
+    cell1.iterate
+    cell1.state.should == :dead
   end
 end
