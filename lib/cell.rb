@@ -22,13 +22,8 @@ class Cell
   end
 
   def alive_neighbours_count
-    live_neighbours = []
-    @neighbours.each do |live|
-      if (live.state == :alive)
-        live_neighbours << live
-      end
-    end
-    live_neighbours.size
+    live = @neighbours.find_all{|cell| cell.state == :alive}
+    live.size
   end
 
   def iterate
