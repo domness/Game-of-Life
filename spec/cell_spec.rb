@@ -1,6 +1,6 @@
-require_relative '../lib/cell'
+require 'cell'
 
-describe "Cell" do
+describe Cell do
   it "should be initialized as dead" do
     cell = Cell.new
     cell.state.should == :dead

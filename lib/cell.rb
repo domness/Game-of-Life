@@ -1,6 +1,5 @@
 class Cell
   attr_accessor :state
-  attr_accessor :neighbours_count
   attr_reader :neighbours
   attr_writer :next_state
   protected :neighbours
