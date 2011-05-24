@@ -46,4 +46,12 @@ describe "Cell" do
     cell1.add_neighbour(cell3)
     cell1.alive_neighbours_count.should == 2
   end
+
+  it "should assess its state for its next iteration" do
+    cell1 = Cell.new
+    cell1.next_state = :alive
+    cell1.state.should == :dead
+    cell1.iterate
+    cell1.state.should == :alive
+  end
 end
