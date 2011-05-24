@@ -9,13 +9,25 @@ class Cell
     @state = :dead
   end
 
-  def next_state
-    if @neighbours_count == 2
-      @state = :alive
-    elsif @neighbours_count == 3
-      @state = :alive
-    else
-      @state = :dead
+  def add_neighbour(cell)
+    unless @neighbours.include? cell
+      @neighbours << cell
+      cell.neighbours << self
     end
   end
+
+  def neighbours_count
+    @neighbours.size
+  end
+
+  def alive_neighbours_count
+    live_neighbours = []
+    @neighbours.each do |live|
+      if (live.state == :alive)
+        live_neighbours << live
+      end
+    end
+    live_neighbours.size
+  end
+
 end

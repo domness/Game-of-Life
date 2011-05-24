@@ -6,37 +6,44 @@ describe "Cell" do
     cell.state.should == :dead
   end
 
-  it "live cell should die from under-population" do
-    cell = Cell.new
-    cell.state = :alive
-    cell.neighbours_count = 1
-    cell.next_state.should == :dead
+  it "should have neighbours" do
+    cell1 = Cell.new
+    cell2 = Cell.new
+
+    cell1.neighbours_count.should == 0
+    cell2.neighbours_count.should == 0
+
+    cell1.add_neighbour(cell2)
+
+    cell1.neighbours_count.should == 1
+    cell2.neighbours_count.should == 1
   end
 
-  it "live cell should live with 2 neighbours" do
-    cell = Cell.new
-    cell.state = :alive
-    cell.neighbours_count = 2
-    cell.next_state.should == :alive
+  it "should only have a certain cell as a neighbour once" do
+    cell1 = Cell.new
+    cell2 = Cell.new
+
+    cell1.neighbours_count.should == 0
+    cell2.neighbours_count.should == 0
+
+    cell1.add_neighbour(cell2)
+    cell1.add_neighbour(cell2)
+
+    cell1.neighbours_count.should == 1
+    cell2.neighbours_count.should == 1
   end
 
-  it "live cell should live with 3 neighbours" do
-    cell = Cell.new
-    cell.state = :alive
-    cell.neighbours_count = 3
-    cell.next_state.should == :alive
-  end
+  it "should have alive neighbours" do
+    cell1 = Cell.new
+    cell2 = Cell.new
+    cell3 = Cell.new
 
-  it "live cell with more than 3 live neighbours dies" do
-    cell = Cell.new
-    cell.state = :alive
-    cell.neighbours_count = 4
-    cell.next_state.should == :dead
-  end
-  
-  it "dead cell with exactly 3 live neighbours should be born" do
-    cell = Cell.new
-    cell.neighbours_count = 3
-    cell.next_state.should == :alive
+    cell1.add_neighbour(cell2)
+    cell1.alive_neighbours_count.should == 0
+    cell2.state = :alive
+    cell1.alive_neighbours_count.should == 1
+    cell3.state = :alive
+    cell1.add_neighbour(cell3)
+    cell1.alive_neighbours_count.should == 2
   end
 end
