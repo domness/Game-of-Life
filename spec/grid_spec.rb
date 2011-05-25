@@ -23,7 +23,7 @@ describe Grid do
     @grid.column_count.should == 10
   end
 
-  it "corner cells should have neighbours" do
+  it "should have 3 neighbours for corner cells" do
     cell = @grid.cell_at(0, 0)
     cell.neighbours_count.should == 3
     cell = @grid.cell_at(0, COLUMNS - 1)
@@ -32,6 +32,15 @@ describe Grid do
     cell.neighbours_count.should == 3
     cell = @grid.cell_at(ROWS - 1, 0)
     cell.neighbours_count.should == 3
+  end
+
+  it "should have 5 neighbours in the first and last row" do
+    for column in 1...COLUMNS-1
+      cell = @grid.cell_at(0, column)
+      cell.neighbours_count.should == 5
+      cell = @grid.cell_at(ROWS - 1, column)
+      cell.neighbours_count.should == 5
+    end
   end
 
   after(:each) do
