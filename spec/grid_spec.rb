@@ -57,6 +57,15 @@ describe Grid do
     end
   end
 
+  it "should have 8 neighbours when not along the edges" do
+    for row in 1...ROWS-1
+      for column in 1...COLUMNS-1
+        cell = @grid.cell_at(row, column)
+        cell.neighbours_count.should == 8
+      end
+    end
+  end
+
   after(:each) do
     @grid = nil
   end
