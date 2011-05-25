@@ -66,6 +66,15 @@ describe Grid do
     end
   end
 
+  it "should have a cell that dies when it is under-populated" do
+    cell = @grid.cell_at(3, 3)
+    cell.state.should == :dead
+
+    cell.state = :live
+    @grid.evolve
+    cell.state.should == :dead
+  end
+
   after(:each) do
     @grid = nil
   end

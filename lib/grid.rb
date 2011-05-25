@@ -31,4 +31,8 @@ class Grid
   def row_count()
     @grid.size
   end
+
+  def evolve()
+    
+  end
 end
