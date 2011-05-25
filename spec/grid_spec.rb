@@ -12,6 +12,14 @@ describe Grid do
     cell.state.should == :dead
   end
 
+  it "should have a row count" do
+    @grid.row_count.should == 5
+  end
+
+  it "should have a column count" do
+    @grid.column_count.should == 10
+  end
+
   after(:each) do
     @grid = nil
   end

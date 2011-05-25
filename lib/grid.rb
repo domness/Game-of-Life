@@ -1,7 +1,7 @@
 require_relative 'cell'
 
 class Grid
-  def initialize (rows, columns)
+  def initialize(rows, columns)
     @grid = Array.new(rows)
     for row in 0...rows
       @grid[row] = Array.new(columns)
@@ -20,7 +20,15 @@ class Grid
     end
   end
 
-  def cell_at (row, column)
+  def cell_at(row, column)
     @grid[row][column]
+  end
+
+  def column_count()
+    @grid[0].size
+  end
+
+  def row_count()
+    @grid.size
   end
 end
