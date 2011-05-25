@@ -47,6 +47,16 @@ describe Grid do
     end
   end
 
+  it "should have 5 neighbours in the first and last column except the corners" do
+    for row in 1...ROWS-1
+      cell = @grid.cell_at(row, 0)
+      cell.neighbours_count.should == 5
+
+      cell = @grid.cell_at(row, COLUMNS - 1)
+      cell.neighbours_count.should == 5
+    end
+  end
+
   after(:each) do
     @grid = nil
   end
