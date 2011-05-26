@@ -107,6 +107,21 @@ describe Grid do
     test_cell.state.should == :dead
   end
 
+  it "should be able to print to it's rows" do
+    row = @grid.get_row(1)
+    row.should == "0000000000"
+
+    cell = @grid.cell_at(1, 2)
+    cell.state = :alive
+    row = @grid.get_row(1)
+    row.should == "0010000000"
+
+    cell = @grid.cell_at(1, 3)
+    cell.state = :alive
+    row = @grid.get_row(1)
+    row.should == "0011000000"
+  end
+
   after(:each) do
     @grid = nil
   end

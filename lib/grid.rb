@@ -50,4 +50,13 @@ class Grid
       end
     end
   end
+
+  def get_row(row)
+    string = ""
+    @grid[row].each do |cell|
+      string << "0" if cell.state == :dead
+      string << "1" if cell.state == :alive
+    end
+    return string
+  end
 end
