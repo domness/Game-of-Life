@@ -59,4 +59,10 @@ class Grid
     end
     return string
   end
+
+  def print_grid
+    for row in 0...row_count
+      puts get_row(row)
+    end
+  end
 end
