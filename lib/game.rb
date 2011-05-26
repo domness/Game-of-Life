@@ -21,6 +21,7 @@ class Game
       i += 1
       print "\e[2J\e[f"
       @grid.print_grid
+      puts "iteration #{i}"
       @grid.evolve
       sleep timer_seconds
     end until i == iterations
