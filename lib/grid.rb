@@ -24,15 +24,30 @@ class Grid
     @grid[row][column]
   end
 
-  def column_count()
+  def column_count
     @grid[0].size
   end
 
-  def row_count()
+  def row_count
     @grid.size
   end
 
-  def evolve()
-    
+  def evolve
+    each_cell do |cell|
+      cell.next_state = :dead if cell.state == :alive && cell.alive_neighbours_count < 2
+      cell.next_state = :alive if cell.state == :dead && cell.alive_neighbours_count == 3
+      cell.next_state = :dead if cell.state == :alive && cell.alive_neighbours_count > 3
+    end
+    each_cell do |cell|
+      cell.iterate
+    end
+  end
+
+  def each_cell
+    @grid.each do |row|
+      row.each do |cell|
+        yield cell
+      end
+    end
   end
 end

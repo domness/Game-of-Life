@@ -66,13 +66,45 @@ describe Grid do
     end
   end
 
-  it "should have a cell that dies when it is under-populated" do
+  it "should have cells that die when they are under-populated" do
     cell = @grid.cell_at(3, 3)
     cell.state.should == :dead
 
-    cell.state = :live
+    cell.state = :alive
     @grid.evolve
     cell.state.should == :dead
+  end
+
+  it "should have cells that are reborn" do
+    cell1 = @grid.cell_at(0, 0)
+    cell1.state = :alive
+    cell2 = @grid.cell_at(1, 0)
+    cell2.state = :alive
+    cell3 = @grid.cell_at(2, 0)
+    cell3.state = :alive
+
+    test_cell = @grid.cell_at(1, 1)
+
+    test_cell.state = :dead
+    @grid.evolve
+    test_cell.state.should == :alive
+  end
+
+  it "should have cells that are overcrowded" do
+    cell1 = @grid.cell_at(0, 0)
+    cell1.state = :alive
+    cell2 = @grid.cell_at(1, 0)
+    cell2.state = :alive
+    cell3 = @grid.cell_at(2, 0)
+    cell3.state = :alive
+    cell4 = @grid.cell_at(0, 1)
+    cell4.state = :alive
+    test_cell = @grid.cell_at(1, 1)
+    test_cell.state = :alive
+
+    @grid.evolve
+
+    test_cell.state.should == :dead
   end
 
   after(:each) do
