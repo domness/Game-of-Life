@@ -28,16 +28,16 @@ class Game
 end
 
 if $0 == __FILE__ then
-  game = Game.new(5, 10)
-  alive_cells = [{:row => 1, :column => 3},
-    {:row => 1, :column => 4},
-    {:row => 1, :column => 5},
-    {:row => 2, :column => 3},
-    {:row => 2, :column => 4},
-    {:row => 2, :column => 5},
-    {:row => 3, :column => 3},
-    {:row => 3, :column => 4},
-    {:row => 3, :column => 5}]
+  game = Game.new(10, 20)
+  alive_cells = [{:row => 1, :column => 4},
+    {:row => 5, :column => 5},
+    {:row => 5, :column => 6},
+    {:row => 6, :column => 4},
+    {:row => 6, :column => 5},
+    {:row => 7, :column => 6},
+    {:row => 7, :column => 4},
+    {:row => 8, :column => 5},
+    {:row => 8, :column => 6}]
   game.set_alive_cells(alive_cells)
-  game.play_game(50, 0.2)
+  game.play_game(100, 0.2)
 end
