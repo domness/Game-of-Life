@@ -109,17 +109,17 @@ describe Grid do
 
   it "should be able to print to it's rows" do
     row = @grid.get_row(1)
-    row.should == "0000000000"
+    row.should == "OOOOOOOOOO"
 
     cell = @grid.cell_at(1, 2)
     cell.state = :alive
     row = @grid.get_row(1)
-    row.should == "0010000000"
+    row.should == "OO1OOOOOOO"
 
     cell = @grid.cell_at(1, 3)
     cell.state = :alive
     row = @grid.get_row(1)
-    row.should == "0011000000"
+    row.should == "OO11OOOOOO"
   end
 
   after(:each) do

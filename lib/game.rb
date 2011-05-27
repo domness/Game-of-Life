@@ -2,7 +2,7 @@ require_relative 'cell'
 require_relative 'grid'
 
 class Game
-  attr_accessor :grid
+  attr_reader :grid
 
   def initialize(rows, columns)
     @grid = Grid.new(rows, columns)
