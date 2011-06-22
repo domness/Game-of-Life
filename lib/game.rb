@@ -1,4 +1,4 @@
-require_relative 'grid'
+require 'grid'
 
 class Game
   attr_reader :grid

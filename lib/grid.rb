@@ -1,4 +1,4 @@
-require_relative 'cell'
+require 'cell'
 
 class Grid
   def initialize(rows, columns)

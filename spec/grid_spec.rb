@@ -1,12 +1,9 @@
 require 'grid'
 require 'cell'
 
-ROWS = 5
-COLUMNS = 10
-
 describe Grid do
   before(:each) do
-    @grid = Grid.new(ROWS, COLUMNS)
+    @grid = Grid.new(5, 10)
   end
 
   it "should contain a grid of cells" do
